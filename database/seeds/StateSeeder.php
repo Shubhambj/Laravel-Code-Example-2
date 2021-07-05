@@ -17,10 +17,7 @@ class StateSeeder extends Seeder
 
         State::truncate();
         foreach ($states as $state) {
-            State::create([
-                'name' => $state['name'],
-                'country_id' => $state['country_id'],
-            ]);
+            State::create($state);
         }
     }
 }

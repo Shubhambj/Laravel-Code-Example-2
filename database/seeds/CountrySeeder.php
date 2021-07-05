@@ -17,11 +17,7 @@ class CountrySeeder extends Seeder
 
         Country::truncate();
         foreach ($countries as $country) {
-            Country::create([
-                'name' => $country['name'],
-                'code' => $country['sortname'],
-                'phone_code' => $country['phoneCode']
-            ]);
+            Country::create($country);
         }
     }
 }

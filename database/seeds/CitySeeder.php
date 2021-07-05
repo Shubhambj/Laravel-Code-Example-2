@@ -14,10 +14,11 @@ class CitySeeder extends Seeder
     {
         $citiesData = file_get_contents(public_path('db_json/cities.json'));
         $cities = json_decode($citiesData, true)['cities'];
+        $citiesChunks = array_chunk($cities, 500);
 
         City::truncate();
-        foreach ($cities as $city) {
-            City::create($city);
+        foreach ($citiesChunks as $cities) {
+            City::insert($cities);
         }
     }
 }
